@@ -39,10 +39,10 @@ public class YoutubeServiceImpl implements YoutubeService {
 		ResponseEntity<YoutubeDownloadResponse> response = restTemplate.exchange(api, HttpMethod.GET, entity,
 				YoutubeDownloadResponse.class);
 
-		if(response == null) {
+		if (response == null) {
 			throw new RuntimeException("The link is invalid, no value exist");
 		}
-		
+
 		return response.getBody();
 
 	}
@@ -50,12 +50,10 @@ public class YoutubeServiceImpl implements YoutubeService {
 	public String getIdFromLongLink(String link) {
 
 		if (link.contains("https://www.youtube.com")) {
-			System.out.println(link.replace("https://www.youtube.com/watch?v=", "").split("?")[0]);
-			return link.replace("https://www.youtube.com/watch?v=", "").split("?")[0];
+			return link.replace("https://www.youtube.com/watch?v=", "").split("\\?")[0];
 
 		} else if (link.contains("https://youtu.be/")) {
-			System.out.println(link.replace("https://youtu.be/", "").split("?")[0]);
-			return link.replace("https://youtu.be/", "").split("?")[0];
+			return link.replace("https://youtu.be/", "").split("\\?")[0];
 		} else {
 			throw new RuntimeException("Please provide correct link\n[In form of (https://www.youtube.com)]");
 		}
