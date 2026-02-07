@@ -10,10 +10,10 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.downloader</groupId>
-	<artifactId>VideoDownloader</artifactId>
+	<artifactId>Video</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>VideoDownloader</name>
-	<description>External API usage</description>
+	<description>Use of External API</description>
 	<url/>
 	<licenses>
 		<license/>
