@@ -14,8 +14,6 @@ import com.video.service.InstagramService;
 @Service
 public class InstagramServiceImpl implements InstagramService {
 
-    private final SwaggerConfiguration swaggerConfiguration;
-
 	@Value("${x-rapidapi-key}")
 	private String apiKey;
 	@Value("${instagram-x-rapidapi-host}")
@@ -23,9 +21,8 @@ public class InstagramServiceImpl implements InstagramService {
 	private final RestTemplate restTemplate;
 	private String api;
 
-	public InstagramServiceImpl(RestTemplate restTemplate, SwaggerConfiguration swaggerConfiguration) {
+	public InstagramServiceImpl(RestTemplate restTemplate ) {
 		this.restTemplate = restTemplate;
-		this.swaggerConfiguration = swaggerConfiguration;
 	}
 
 	@Override

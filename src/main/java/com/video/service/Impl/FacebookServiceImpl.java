@@ -19,8 +19,6 @@ import com.video.service.FacebookService;
 @Service
 public class FacebookServiceImpl implements FacebookService {
 
-    private final SwaggerConfiguration swaggerConfiguration;
-
 	@Value("${x-rapidapi-key}")
 	private String apiKey;
 	@Value("${facebook-x-rapidapi-host}")
@@ -28,9 +26,8 @@ public class FacebookServiceImpl implements FacebookService {
 	private final RestTemplate restTemplate;
 	private String api;
 
-	public FacebookServiceImpl(RestTemplate restTemplate, SwaggerConfiguration swaggerConfiguration) {
+	public FacebookServiceImpl(RestTemplate restTemplate) {
 		this.restTemplate = restTemplate;
-		this.swaggerConfiguration = swaggerConfiguration;
 	}
 
 	@Override
