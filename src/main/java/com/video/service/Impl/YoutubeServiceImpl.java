@@ -26,13 +26,12 @@ public class YoutubeServiceImpl implements YoutubeService {
 	}
 
 	@Override
-	public YoutubeDownloadResponse downloadVideo(String link,boolean longVideo) {
+	public YoutubeDownloadResponse downloadVideo(String link, boolean longVideo) {
 
-		if(longVideo) {
-			api="https://yt-api.p.rapidapi.com/dl?id=" + getIdFromLongVideoLink(link);
-		}
-		else {
-			api="https://yt-api.p.rapidapi.com/dl?id=" + getIdFromShortsLink(link);
+		if (longVideo) {
+			api = "https://yt-api.p.rapidapi.com/dl?id=" + getIdFromLongVideoLink(link);
+		} else {
+			api = "https://yt-api.p.rapidapi.com/dl?id=" + getIdFromShortsLink(link);
 		}
 
 		HttpHeaders headers = new HttpHeaders();
@@ -40,7 +39,7 @@ public class YoutubeServiceImpl implements YoutubeService {
 		headers.set("x-rapidapi-host", apiHost);
 		headers.set("Content-Type", "application/json");
 
-		var httpHeader = new HttpEntity<>(headers); //HTTPEntity => It has header and Body fields
+		var httpHeader = new HttpEntity<>(headers); // HTTPEntity => It has header and Body fields
 
 		ResponseEntity<YoutubeDownloadResponse> response = restTemplate.exchange(api, HttpMethod.GET, httpHeader,
 				YoutubeDownloadResponse.class);
@@ -57,9 +56,10 @@ public class YoutubeServiceImpl implements YoutubeService {
 
 		if (link.contains("https://www.youtube.com")) {
 			return link.replace("https://www.youtube.com/watch?v=", "").split("\\?")[0];
-
 		} else if (link.contains("https://youtu.be/")) {
 			return link.replace("https://youtu.be/", "").split("\\?")[0];
+		} else if (link.contains("https://youtube.com")) {
+			return link.replace("https://youtube.com", "").split("\\?")[0];
 		} else {
 			throw new RuntimeException("Please provide correct link\n[In form of (https://www.youtube.com)]");
 		}
@@ -69,9 +69,12 @@ public class YoutubeServiceImpl implements YoutubeService {
 
 		if (link.contains("https://www.youtube.com/shorts/")) {
 			return link.replace("https://www.youtube.com/shorts/", "").split("\\?")[0];
-
-		} else {
-			throw new RuntimeException("Please provide correct link for shorts\n[In form of (https://www.youtube.com/shorts)]");
+		} 
+		else if(link.contains("https://youtube.com/shorts")) {
+			return link.replace("https://youtube.com/shorts/", "").split("\\?")[0];
+		}else {
+			throw new RuntimeException(
+					"Please provide correct link for shorts\n[In form of (https://www.youtube.com/shorts)]");
 		}
 	}
 }
