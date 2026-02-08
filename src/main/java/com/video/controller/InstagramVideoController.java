@@ -13,7 +13,7 @@ import jakarta.validation.constraints.NotNull;
 
 @RestController
 @RequestMapping("/api/v1/instagram")
-@Tag(name = "Instagram APIs", description = "Instagram reels can be downloaded")
+@Tag(name = "Instagram APIs", description = "Instagram reels download API")
 public class InstagramVideoController {
 
 	private InstagramServiceImpl instagramServiceImpl;

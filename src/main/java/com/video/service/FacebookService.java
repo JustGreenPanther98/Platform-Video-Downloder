@@ -1,5 +1,7 @@
 package com.video.service;
 
-public interface FacebookService {
+import com.video.response.FacebookDownloadResponse;
 
+public interface FacebookService {
+	FacebookDownloadResponse downloadVideo(String link);
 }
