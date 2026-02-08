@@ -1,5 +1,7 @@
 package com.video.service;
 
-public interface InstagramService {
+import com.video.response.InstagramDownloadResponse;
 
+public interface InstagramService {
+	InstagramDownloadResponse downloadVideo(String link);
 }

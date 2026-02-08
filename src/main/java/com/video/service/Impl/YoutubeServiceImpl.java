@@ -14,10 +14,10 @@ import com.video.service.YoutubeService;
 @Service
 public class YoutubeServiceImpl implements YoutubeService {
 
-	private RestTemplate restTemplate;
+	private final RestTemplate restTemplate;
 	@Value("${x-rapidapi-key}")
 	private String apiKey;
-	@Value("${x-rapidapi-host}")
+	@Value("${youtube-x-rapidapi-host}")
 	private String apiHost;
 	private String api;
 
