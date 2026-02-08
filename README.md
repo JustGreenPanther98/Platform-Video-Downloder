@@ -5,7 +5,7 @@ A powerful Spring Boot REST API for fetching high-quality download links from Fa
 🔗 Quick Links
 
 >Live Documentation: <a href="https://platform-video-downloder.onrender.com/swagger-ui/index.html#/">Swagger UI</a>
->Base Production URL: https://platform-video-downloder.onrender.com
+Base Production URL: https://platform-video-downloder.onrender.com
 <br>
 📌 Features
 Multi-Platform Support: Facebook, Instagram, and YouTube.
