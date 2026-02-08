@@ -7,11 +7,14 @@ import org.springframework.http.HttpMethod;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
+import com.video.configurations.SwaggerConfiguration;
 import com.video.response.InstagramDownloadResponse;
 import com.video.service.InstagramService;
 
 @Service
 public class InstagramServiceImpl implements InstagramService {
+
+    private final SwaggerConfiguration swaggerConfiguration;
 
 	@Value("${x-rapidapi-key}")
 	private String apiKey;
@@ -20,8 +23,9 @@ public class InstagramServiceImpl implements InstagramService {
 	private final RestTemplate restTemplate;
 	private String api;
 
-	public InstagramServiceImpl(RestTemplate restTemplate) {
+	public InstagramServiceImpl(RestTemplate restTemplate, SwaggerConfiguration swaggerConfiguration) {
 		this.restTemplate = restTemplate;
+		this.swaggerConfiguration = swaggerConfiguration;
 	}
 
 	@Override
@@ -40,7 +44,6 @@ public class InstagramServiceImpl implements InstagramService {
 		var http = new HttpEntity(header);
 		
 		var response = restTemplate.exchange(api,HttpMethod.GET, http, InstagramDownloadResponse.class);
-		
 		return response.getBody();
 	}
 

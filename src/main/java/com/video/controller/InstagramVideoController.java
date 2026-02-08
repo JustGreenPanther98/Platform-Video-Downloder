@@ -23,7 +23,7 @@ public class InstagramVideoController {
 	}
 
 	@GetMapping(path = "/reels/download")
-	public InstagramDownloadResponse downloadReels(@RequestParam("url") @NotNull String link) {
+	public InstagramDownloadResponse downloadReels(@RequestParam("url") String link) {
 		return instagramServiceImpl.downloadVideo(link);
 	}
 }
